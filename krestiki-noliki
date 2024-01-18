@@ -1,0 +1,46 @@
+pole = [1, 2, 3,
+        4, 5, 6,
+        7, 8, 9]
+
+victory = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 4, 7], [2, 5, 8], [3, 6, 9], [1, 5, 9], [3, 5, 7]]
+
+def vivod_pole():
+    print(pole[0], pole[1], pole[2])
+    print(pole[3], pole[4], pole[5])
+    print(pole[6], pole[7], pole[8])
+    
+def step_pole(step, symbol):
+    ind = pole.index(step)
+    pole[ind] = symbol
+    
+def game_res():
+    win = None
+    for i in victory:
+        if pole[i[0]] == "x" and pole[i[1]] == "x" and pole [i[2]] == "x":
+            win = "x"
+        if pole[i[0]] == "0" and pole[i[1]] == "0" and pole [i[2]] == "0":
+            win = "0"
+    return win
+
+game_over = False
+pl1 = True
+pl2 = True
+while game_over == False:
+    
+    vivod_pole()
+    
+    if pl1 == True:
+        symbol = "x"
+        step = int(input("Ходит Х"))
+    else:
+        symbol = "0"
+        step = int(input("Ходит 0"))
+    step_pole(step, symbol)
+    win = game_res()
+    if win == None:
+        game_over = False
+    else:
+        game_over = True
+    pl1 = not(pl1)
+vivod_pole()
+print(f"Победил {win}")
